@@ -17,6 +17,7 @@
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "@types/react": "^16.8.22",
     "babel-loader": "8.0.6",
     "babel-plugin-zent": "^1.2.2",
     "clean-webpack-plugin": "^3.0.0",
@@ -35,6 +36,8 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "^1.3.0",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.2",
     "url-loader": "^2.0.1",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5",
@@ -48,6 +51,7 @@
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
+    "tslib": "^1.10.0",
     "zent": "^6.6.5"
   }
 }

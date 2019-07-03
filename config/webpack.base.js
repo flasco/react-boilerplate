@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const { STATIC_PATH } = require('./base');
+const resolve = require('path').resolve;
 
 const config = {
   module: {
@@ -63,6 +64,10 @@ const config = {
       {
         test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/,
         use: 'url-loader'
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader'
       }
     ]
   },
@@ -70,6 +75,12 @@ const config = {
   node: {
     __dirname: false,
     __filename: false
+  },
+  resolve: {
+    extensions: ['.ts', '.js', '.tsx'],
+    alias: {
+      '@': resolve(__dirname, '../src'),
+    }
   },
   plugins: [
     new webpack.DllReferencePlugin({
