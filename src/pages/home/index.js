@@ -6,7 +6,7 @@ class Home extends React.PureComponent {
   render() {
     return (
       <div style={{ padding: 20 }}>
-        <span>hello.</span>
+        <span>hello.12</span>
       </div>
     );
   }

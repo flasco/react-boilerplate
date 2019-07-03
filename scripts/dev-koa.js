@@ -1,18 +1,38 @@
 const Koa = require('koa');
+const path = require('path');
 const koaWebpack = require('koa-webpack');
 const cors = require('koa2-cors');
+const static = require('koa-static');
+
+const { checkMainfest, dllComplier } = require('./util');
 const config = require('../config/webpack.dev');
 
-const app = new Koa();
+async function start() {
+  if (!(await checkMainfest())) {
+    await dllComplier();
+  }
 
-koaWebpack({
-  config
-}).then((middleware) => {
-  app.use(middleware);
-});
+  const app = new Koa();
 
-app.use(cors());
+  const root = path.resolve(__dirname, '../static');
 
-app.listen(8207, () => {
-  console.log('app listen at 8207');
-});
+  app.use(
+    static(root, {
+      index: 'index-dev.html'
+    })
+  );
+
+  koaWebpack({
+    config
+  }).then(middleware => {
+    app.use(middleware);
+  });
+
+  app.use(cors());
+
+  app.listen(8207, () => {
+    console.log('app listen at 8207');
+  });
+}
+
+start();
