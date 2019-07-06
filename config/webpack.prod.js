@@ -5,11 +5,12 @@ const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 const merge = require('webpack-merge');
 
-const baseConfig = require('./webpack.base');
+const getBaseConfig = require('./webpack.base');
 const { STATIC_PATH, MAIN_JS } = require('./base');
 
+process.env.PROJECT_ENV = 'production';
 
-module.exports = merge.smart(baseConfig, {
+module.exports = merge.smart(getBaseConfig(), {
   mode: 'production',
   entry: [path.resolve(__dirname, MAIN_JS)],
   plugins: [

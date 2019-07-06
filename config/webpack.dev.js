@@ -1,9 +1,11 @@
 const path = require('path');
 const merge = require('webpack-merge');
-const baseConfig = require('./webpack.base');
+const getBaseConfig = require('./webpack.base');
 const { STATIC_PATH, MAIN_JS } = require('./base');
 
-module.exports = merge.smart(baseConfig, {
+process.env.PROJECT_ENV = 'development';
+
+module.exports = merge.smart(getBaseConfig(), {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: ['react-hot-loader/patch', path.resolve(__dirname, MAIN_JS)],

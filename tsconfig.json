@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "module": "esnext",
-    "jsx": "react",
+    "jsx": "preserve",
     "lib": ["dom", "es2017", "es2018.promise"],
     "skipLibCheck": true,
     "sourceMap": true,
